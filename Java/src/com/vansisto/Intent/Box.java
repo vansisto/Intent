@@ -31,16 +31,4 @@ public class Box {
     public int getVolume() {
         return volume;
     }
-
-    public void setVolume(int volume) {
-        this.volume = volume;
-    }
-
-    public List<Shape> getShapes() {
-        return shapes;
-    }
-
-    public void setShapes(List<Shape> shapes) {
-        this.shapes = shapes;
-    }
 }
