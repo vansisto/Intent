@@ -1,4 +1,4 @@
-package com.vansisto.Intent;
+package com.vansisto.Intent.Task1_ShapeBox;
 
 import java.util.ArrayList;
 import java.util.List;
