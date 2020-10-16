@@ -1,7 +1,5 @@
 package com.vansisto.Intent;
 
-import java.util.Arrays;
-
 public class Main {
 //############     Office    ######################
 //    public static void main(String[] args) {
@@ -24,5 +22,21 @@ public class Main {
 //        System.out.println(Arrays.toString(arr));
 //    }
 
-    
+    public static void main(String[] args) {
+        int[] x = {6, 5, 4, 3, 2, 1};
+        int[] y = {6, 5, 4, 3, 2, 1};
+
+        String[] color = {"red", "blue", "green", "yellow", "black", "white"};
+
+        Point[] points = new Point[x.length];
+
+        for (int i = x.length - 1; i >= 0; i--) {
+            points[i] = new Point(x[i], y[i], color[i]);
+        }
+
+        for (Point point: points
+             ) {
+            System.out.println(point);
+        }
+    }
 }
