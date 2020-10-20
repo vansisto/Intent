@@ -13,5 +13,6 @@ public class Main {
         System.out.println("Removed: " + list.remove(2));
         int el = 1;
         System.out.println("Element " + el + " = " + list.get(el));
+        System.out.println(list.get(2));
     }
 }

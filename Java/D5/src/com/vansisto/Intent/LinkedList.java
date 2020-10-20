@@ -103,7 +103,7 @@ public class LinkedList<E> implements List<E> {
             }
             return result.value;
         } else
-            throw new IndexOutOfBoundsException("Item with index " + index + " doesn't exist.");
+            throw new ArrayIndexOutOfBoundsException("No index:" + index + " in array size:" + size);
     }
 
     @Override
@@ -121,6 +121,7 @@ public class LinkedList<E> implements List<E> {
         Node removed;
         Node tmp = head;
 
+        if (index >= size) throw new ArrayIndexOutOfBoundsException("No index:" + index + " in array size:" + size);
         if (current == null) return null;
         if (index == 0){
             removed = new Node(head);
