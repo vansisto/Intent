@@ -1,4 +1,4 @@
-package com.vansisto.MyLombok;
+package com.vansisto.Annotation;
 
 public class Main {
     public static void main(String[] args) {

@@ -1,4 +1,4 @@
-package com.vansisto.MyLombok;
+package com.vansisto.Annotation;
 
 @MyAnn("Some value")
 public class SomeClass {

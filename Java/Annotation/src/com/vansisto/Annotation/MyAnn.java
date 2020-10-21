@@ -1,4 +1,4 @@
-package com.vansisto.MyLombok;
+package com.vansisto.Annotation;
 
 import java.lang.annotation.ElementType;
 import java.lang.annotation.Retention;
