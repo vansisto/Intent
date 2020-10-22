@@ -8,8 +8,8 @@ import java.util.stream.Stream;
 
 public class LinkedList<E> implements List<E> {
 
-    private Node current;
-    private Node head;
+    private Node last;
+    private Node first;
     private int size;
 
     @Override
@@ -19,7 +19,7 @@ public class LinkedList<E> implements List<E> {
 
     @Override
     public boolean isEmpty() {
-        return current == null ? true : false;
+        return last == null ? true : false;
     }
 
     @Override
@@ -44,14 +44,14 @@ public class LinkedList<E> implements List<E> {
 
     @Override
     public boolean add(E e) {
-        if (current != null){
-            current.next = new Node((E)e, null, current);
-            current = current.next;
+        if (last != null){
+            last.next = new Node((E)e, null, last);
+            last = last.next;
             size++;
             return true;
         } else {
-            current = new Node((E)e, null, null);
-            head = current;
+            last = new Node((E)e, null, null);
+            first = last;
             size++;
             return true;
         }
@@ -89,24 +89,18 @@ public class LinkedList<E> implements List<E> {
 
     @Override
     public void clear() {
-        current = null;
-        head = null;
+        last = null;
+        first = null;
         size = 0;
     }
 
     @Override
     public E get(int index) {
-//        if (index < size){
-//            Node result = head;
-//            for(int i = 0; i < index; i++){
-//                result = result.next;
-//            }
-//            return result.value;
-//        } else
-//            throw new LinkedIndexOutOfBoundException(index);
         if (index < size){
-            Node result = head;
-            return result.value;
+            return Stream.iterate(first, n -> n = n.next)
+                    .skip(index)
+                    .findFirst()
+                    .get().value;
         } else
             throw new LinkedIndexOutOfBoundException(index);
     }
@@ -124,35 +118,38 @@ public class LinkedList<E> implements List<E> {
     @Override
     public E remove(int index) {
         Node removed;
-        Node tmp = head;
 
         if (index >= size) throw new LinkedIndexOutOfBoundException(index);
-        if (current == null) return null;
+        if (first == null) throw new NullPointerException("The list is empty");
+        if (size == 1) {
+            removed = new Node(first);
+            clear();
+            return removed.value;
+        }
         if (index == 0){
-            removed = new Node(head);
-            current = head.next;
-            head = current;
-            head.prev = null;
+            removed = new Node(first);
+            first = first.next;
+            first.prev = null;
+            size--;
+            return removed.value;
+        }
+        if (index == size - 1){
+            removed = new Node(last);
+            last = last.prev;
+            last.next = null;
             size--;
             return removed.value;
         }
 
-        for (int i = 0; i < index; i++){
-            tmp = tmp.next;
-        }
-        removed = new Node(tmp);
-
-        if (index + 1 == size)
-            tmp.next = null;
-
-        if (tmp.next != null){
-            tmp.next.prev = tmp.prev;
-            tmp.prev.next = tmp.next;
-        } else {
-            tmp.prev.next = null;
-        }
-
+        removed = Stream.iterate(first, n -> n = n.next)
+                .skip(index)
+                .findFirst()
+                .get();
         size--;
+
+        removed.prev.next = removed.next;
+        removed.next.prev = removed.prev;
+
         return removed.value;
     }
 

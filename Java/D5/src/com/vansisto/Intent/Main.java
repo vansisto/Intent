@@ -10,9 +10,10 @@ public class Main {
         list.add("String 1");
         list.add("String 2");
 
-        System.out.println("Removed: " + list.remove(2));
-        int el = 1;
-        System.out.println("Element " + el + " = " + list.get(el));
-        System.out.println(list.get(2));
+        System.out.println("Removed index 0: " + list.remove(0));
+        System.out.println("Removed index 0: " + list.remove(0));
+
+        int index = 0;
+        System.out.println("get(" + index + ") - " + list.get(index));
     }
 }
