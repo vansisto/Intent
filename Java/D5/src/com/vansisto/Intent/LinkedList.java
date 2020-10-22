@@ -96,11 +96,16 @@ public class LinkedList<E> implements List<E> {
 
     @Override
     public E get(int index) {
+//        if (index < size){
+//            Node result = head;
+//            for(int i = 0; i < index; i++){
+//                result = result.next;
+//            }
+//            return result.value;
+//        } else
+//            throw new LinkedIndexOutOfBoundException(index);
         if (index < size){
             Node result = head;
-            for(int i = 0; i < index; i++){
-                result = result.next;
-            }
             return result.value;
         } else
             throw new LinkedIndexOutOfBoundException(index);
