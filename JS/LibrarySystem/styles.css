@@ -2,6 +2,25 @@
     font-family: Terminal;
     src: url("assets/BigBlue_TerminalPlus.TTF");
 }
+@keyframes flame {
+    from {
+        text-shadow: 0px 0px 9px rgba(107, 180, 82, .8);
+        animation-timing-function: linear;
+    }
+    to {
+        text-shadow: 0px 0px 13px rgba(107, 180, 82, .5);
+        animation-timing-function: linear;
+    }
+}
+@keyframes run {
+    0% {
+        top: -1500px;
+    }
+    100% {
+        top: 80%;
+        opacity: .1;
+    }
+}
 html {
     background-color: #141414;
 }
@@ -9,6 +28,7 @@ body {
     display: flex;
     font-family: Terminal;
     color: #6bb452;
+    animation: flame 1s infinite;
     font-size: 30px;
 }
 .content {
@@ -54,6 +74,24 @@ table {
 }
 .helpscreen {
     position: absolute;
-    width: 100%;
-    height: 100%;
+    width: 90%;
+    height: 90%;
+}
+.runline {
+    z-index: 55;
+    position: absolute;
+    opacity: .2;
+    width: 99%;
+    height: 150px;
+    animation: run 6s infinite linear;
+}
+.texture {
+    opacity: .4;
+    z-index: 53;
+    position: absolute;
+    width: 99%;
+    height: 99%;
+    background-image: url("assets/texture.png");
+    background-position: top left;
+    background-repeat: repeat-y;
 }
