@@ -1,0 +1,59 @@
+@font-face {
+    font-family: Terminal;
+    src: url("assets/BigBlue_TerminalPlus.TTF");
+}
+html {
+    background-color: #141414;
+}
+body {
+    display: flex;
+    font-family: Terminal;
+    color: #6bb452;
+    font-size: 30px;
+}
+.content {
+    position: absolute;
+    top: 75px;
+    left: 5vw;
+    right: 5vw;
+    bottom: 100px;
+}
+table {
+    width: 100%;
+    border: #6bb452 double 9px;
+    padding: 10px;
+}
+.enterLine {
+    position: absolute;
+    bottom: 10px;
+}
+.title{
+    position: absolute;
+    top: 20px;
+    left: 7vw;
+    z-index: 50;
+    background-color: #141414;
+    padding: 0 30px;
+}
+.read {
+    position: absolute;
+    top: 63px;
+    right: 10vw;
+    z-index: 51;
+    background-color: #141414;
+    padding: 0 30px;
+}
+.mainWindow {
+    z-index: 0;
+    position: absolute;
+    top: 35px;
+    left: 2vw;
+    right: 2vw;
+    bottom: 50px;
+    border: #6bb452 double 9px;
+}
+.helpscreen {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+}
