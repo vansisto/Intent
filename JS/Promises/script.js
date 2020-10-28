@@ -90,15 +90,11 @@ function waitForPromise(promise, action){
  * @param {handler} handler
  */
 function consumePromise(promise, consumer, handler){
-    /* IMPLEMENT ME! */
+    promise.then(x => consumer(handler(x)));
 }
 
-/**
- * @callback thunk
- * @returns {void}
- */
-// module.exports = {
-//     waitForPromise,
-//     consumePromise,
-// };
+module.exports = {
+    waitForPromise,
+    consumePromise,
+};
 
