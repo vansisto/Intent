@@ -6,7 +6,7 @@
  */
 function makePromiseResolveWith3(){
     return new Promise(res => {
-        res("Resolve");
+        res(3);
     });
 }
 
@@ -53,22 +53,6 @@ function makeDelayPromise(value, delayInMs){
     })
 }
 
-module.exports = {
-    makePromiseResolveWith3,
-    makePromiseRejectWithBoo,
-    makePromiseWithConstructor,
-    makeDelayPromise,
-};
-
-
-
-
-
-
-
-// PART 2
-// (focus on using .then, .catch, .finally, .etc)
-
 /**
  *
  * EXERCISE 1
@@ -78,7 +62,7 @@ module.exports = {
  *
  */
 function waitForPromise(promise, action){
-    promise.then(action);
+    promise.then(action).catch(action);
 }
 
 /**
@@ -90,10 +74,14 @@ function waitForPromise(promise, action){
  * @param {handler} handler
  */
 function consumePromise(promise, consumer, handler){
-    promise.then(x => consumer(handler(x)));
+    promise.then(x => consumer(handler(x))).then(x => consumer(handler(x)));
 }
 
 module.exports = {
+    makePromiseResolveWith3,
+    makePromiseRejectWithBoo,
+    makePromiseWithConstructor,
+    makeDelayPromise,
     waitForPromise,
     consumePromise,
 };
