@@ -74,7 +74,7 @@ function waitForPromise(promise, action){
  * @param {handler} handler
  */
 function consumePromise(promise, consumer, handler){
-    promise.then(x => consumer(handler(x))).then(x => consumer(handler(x)));
+    promise.then(x => consumer(handler(x))).catch(x => consumer(handler(x)));
 }
 
 module.exports = {
